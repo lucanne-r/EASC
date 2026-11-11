@@ -87,7 +87,7 @@
                     @method('DELETE')
                     <button class="btn-del">Hapus</button>
                 </form>
-                <a href="#">
+                   <a href="/p/{{ $p->slug }}">
                     <div>▤</div>
                     <h3>{{ $p->name }}</h3>
                     <div class="d">{{ $p->description ?: 'Database aktivitas sendiri' }}</div>
