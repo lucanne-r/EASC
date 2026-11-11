@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>EACS · Engineering Activity Control</title>
+    <title>EASC · Engineering Activity Control</title>
     <style>
         * { box-sizing: border-box; }
         body { margin: 0; background: #f4f5f7; color: #17212e; font: 14px/1.5 "Segoe UI", Arial, sans-serif; }
@@ -56,7 +56,7 @@
 <header class="top">
     <div class="bar">
         <div>
-            <div class="brand">⚙ EACS · Engineering Activity Control</div>
+            <div class="brand">⚙ EASC · Engineering Activity Control</div>
             <div class="sub">Project aktif · Semua Project</div>
         </div>
         <div class="actions">
