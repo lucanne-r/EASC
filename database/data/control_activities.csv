@@ -1,0 +1,257 @@
+code,machine_area,category,priority,activity,pic,status
+L1-5Axis-1,Other,Programming,P1,Connect 5-Axis Single Chamber to Local PMS,,Open
+L1-5Axis-2,Other,Programming,P1,Making RMPE Add PMS at MC 5-Axis Single Chamber,,Open
+L1-5Axis-3,Other,Programming,P1,Lampu NG Skip ON,,Open
+L1-5Axis-4,Other,Programming,P1,Display HMI Skip 5-Axis,,Closed
+L1-5Axis-5,Other,Mechanical,P1,Display Skip,,Open
+L1-Buffer-1,Other,Mechanical,P1,Relayout Touch Panel Buffer Shutter,Fajar HD,Open
+L1-Buffer-2,Other,Electrical,P1,Install E3T VT-3,,Open
+L1-Buffer-3,Other,Programming,P1,Send Data Barcode dari Shoe Clearance to Keyence,,Open
+L1-Buffer-4,Other,Programming,P1,Send IO Buffer to Keyence,,Open
+L1-Buffer-5,Other,Dokumen,P2,"Making RMPE send data barcode, IO ke PLC Keyence",,Open
+L1-Empthy Weight-1,Other,Electrical,P2,Ganti PLC Empthy Weight (Meetingkan dengan MTC),,Open
+L1-P1-04,Barcode Assy + Weight Check 1,Trial,P1,Trial Parameter CSV with Scan 1 Cycle All Model --> konfirmasi from model dari PC dan QA,Izzi,Open
+L1-P1-06,Barcode Assy + Weight Check 1,,,Design Shutter Barcode Assy,,Closed
+L1-P1-07,Barcode Assy + Weight Check 1,,,Print Barcode All PN,,Closed
+L1-P1-08,Barcode Assy + Weight Check 1,,,Improve Refill Barcode — Modif Frame,,Closed
+L1-P1-09,Barcode Assy + Weight Check 1,,,Install Cable Switching Printer,,Closed
+L1-P1-10,Barcode Assy + Weight Check 1,,,Connect SRX-300,,Closed
+L1-P1-11,Barcode Assy + Weight Check 1,,,Setting IP SRX-300,,Closed
+L1-P1-12,Barcode Assy + Weight Check 1,,,Revisi Posisi Lampu Tower Lamp,,Closed
+L1-P1-13,Barcode Assy + Weight Check 1,,,Trial Scan All Model,,Closed
+L1-P1-14,Barcode Assy + Weight Check 1,,,Program Rotate Posisi Barcode,,Closed
+L1-P1-15,Barcode Assy + Weight Check 1,,,Install Spray Manual,,Closed
+L1-P1-16,Barcode Assy + Weight Check 1,,,Program PLC Update — Add SR-X300,,Closed
+L1-P1-17,Barcode Assy + Weight Check 1,,,Relayout Posisi Barcode Lamp,,Closed
+L1-P1-18,Barcode Assy + Weight Check 1,Preparation,P1,Making and Install Emergency Map,Very,Closed
+L1-P1-19,Barcode Assy + Weight Check 1,,,Install VT5-X10,,Closed
+L1-P1-20,Barcode Assy + Weight Check 1,,,Wiring VT5-X10,,Closed
+L1-P1-21,Barcode Assy + Weight Check 1,,,Improve Refill Barcode — Rewiring,,Closed
+L1-P1-22,Barcode Assy + Weight Check 1,,,Trial Pokayoke Check,,Closed
+L1-P1-23,Barcode Assy + Weight Check 1,,,Install Nozzle Spray Actreal,,Closed
+L1-P1-24,Barcode Assy + Weight Check 1,,,Install Solenoid Spray Actreal,,Closed
+L1-P1-25,Barcode Assy + Weight Check 1,,,Trial Printer After Ganti Kabel Serial,,Closed
+L1-P1-26,Barcode Assy + Weight Check 1,,,Trial Label di Rotate,,Closed
+L1-P1-27,Barcode Assy + Weight Check 1,,,Trial Initial One Cycle,,Closed
+L1-P1-28,Barcode Assy + Weight Check 1,Programming,P2,Buat Logging,,Open
+L1-P1-29,Barcode Assy + Weight Check 1,Mechanical,P1,Install Plate Pneumatic,,Closed
+L1-P1-30,Barcode Assy + Weight Check 1,Mechanical,P1,Install Sensor Part Detect Barcode Assy_,Very,Closed
+L1-P1-31,Barcode Assy + Weight Check 1,Electrical,P1,Wiring Sensor Part Detect Barcode Assy,,Closed
+L1-P1-32,Barcode Assy + Weight Check 1,Mechanical,,Install Bracket Foot Switch,,Closed
+L1-P1-33,Barcode Assy + Weight Check 1,Mechanical,P1,Install Tank Actreal,,Closed
+L1-P1-34,Barcode Assy + Weight Check 1,Programming,P2,Program Mastering Large,,Closed
+L1-P1-35,Barcode Assy + Weight Check 1,Electrical,P2,Tambahkan Label IP Address pada Device (VT) 192.168.1.165,Sukri,Closed
+L1-P1-36,Barcode Assy + Weight Check 1,Mechanical,P1,Modif Jig Barcode Assy Tipe D-Max,,Closed
+L1-P1-37,Barcode Assy + Weight Check 1,Mechanical,P2,Modif Jig Barcode Assy Tipe John Deere,,Closed
+L1-P1-38,Barcode Assy + Weight Check 1,Mechanical,P2,Modif Jig Barcode Assy Tipe D01NC,,Closed
+L1-P1-39,PRV,Mechanical,P1,Install sensor Part Detect D46T,,Closed
+L1-P1-40,PRV,Electrical,P1,Wiring Sensor Part Detect D46T,,Closed
+L1-P1-41,Camera Bolt Through,Mechanical,P1,Modif Bracket Fix Background HMI,Wanda,Closed
+L1-P1-42,PRV,Preparation,P1,FS posisi sensor detect part model D46T,Izzi,Closed
+L1-P1-43,PRV,Preparation,P1,Sensor LR-Z250,,Closed
+L1-P1-44,PRV,Preparation,P2,Bracket Sensor LR-Z250,,Closed
+L1-P1-45,Barcode Assy + Weight Check 1,Programming,P2,Making counter OK NG di HMI,,Closed
+L1-P1-47,Camera Bolt Through,Preparation,,"Making Master Bolt (N5) Type (JD, SRE15, SRE11, S11)",,Closed
+L1-P1-48,Barcode Assy + Weight Check 1,Dokumen,P1,Making SOP Mastering Weight Check 1,,Closed
+L1-P1-49,Barcode Assy + Weight Check 1,Dokumen,P2,Edukasi Mastering Zero and Mastering Value Weight 1,,Open
+L1-P1-50,Camera Thrust + Weight Check 2,Dokumen,P1,Edukasi Mastering Camera Thrust Bearing,,Open
+L1-P1-51,PRV,Mechanical,P1,Repair Jig Cap PRV Model D17D (Balik Nylon+Marking Arah Cap+Marking Nama Jig),Fajar HD,Closed
+L1-P1-52,Barcode Assy + Weight Check 1,Dokumen,P2,Install Digital SOP,,Open
+L1-P1-53,PRV,Trial,P1,Trial sensor Part Detect YHA,,Closed
+L1-P1-54,Barcode Assy + Weight Check 1,Mechanical,P1,Modif Bracket Sensor (posisi sensor kurang turun),,Closed
+L1-P1-55,Barcode Assy + Weight Check 1,Electrical,P2,2S Cable Area Barcode Assy,Sukri,Open
+L1-P1-56,Barcode Assy + Weight Check 1,Mechanical,P1,Matrix Jig Barcode Assy (Matrix + Foto),Produksi,Closed
+L1-P1-57,Barcode Assy + Weight Check 1,Trial,P1,Trial Running + Pokayoke Check (Model D26A),Produksi,Closed
+L1-P1-59,Barcode Assy + Weight Check 1,Programming,P1,Alarm Dandory Model,,Closed
+L1-P1-60,Barcode Assy + Weight Check 1,Electrical,P2,Additional Sensor Level Actreal --> Check Tipe Sensor,,Open
+L1-P1-61,Barcode Assy + Weight Check 1,Programming,P1,Improve Model Name at HMI --> Remain Check Program,,Closed
+L1-P1-62,Barcode Assy + Weight Check 1,Programming,P2,Saat Emergency Tekan Reset Buzzer Mati,,Open
+L1-P1-63,Barcode Assy + Weight Check 1,Dokumen,P2,Making Matrix Jig Barcode,,Open
+L1-P1-64,Barcode Assy + Weight Check 1,Programming,P1,Additional Process Auto Spray,Sukri,Closed
+L1-P1-65,Barcode Assy + Weight Check 1,Mechanical,P1,Trial QC N5 per Part Number (11 Model) --> Review Common Posisi Nozzle,Izzi,Open
+L1-P1-66,Barcode Assy + Weight Check 1,Electrical,,Additional Relay untuk printer automatic,,Open
+L1-P1-67,Barcode Assy + Weight Check 1,Design,,Study nambah sensor detect part model E3-T,,Open
+L1-P2-01,Camera Thrust + Weight Check 2,,,Pindah Sensor Detect Part,,Closed
+L1-P2-02,Camera Thrust + Weight Check 2,,,Trial Capture After Relayout Sensor,,Closed
+L1-P2-03,Camera Thrust + Weight Check 2,,,Improve Posisi Sensor Detect Part Model SRE15 terkait Capture Cylinder,,Closed
+L1-P2-05,Camera Thrust + Weight Check 2,Mechanical,P2,Modif Bracket Camera Swing Kanan Kiri,Wanda,Closed
+L1-P2-06,Camera Thrust + Weight Check 2,,,Install Bracket SR1000W,,Closed
+L1-P2-07,Camera Thrust + Weight Check 2,,,Trial Pokayoke Check,,Closed
+L1-P2-08,Camera Thrust + Weight Check 2,,,Wiring Sensor NG,,Closed
+L1-P2-09,Camera Thrust + Weight Check 2,,,Install Bracket Sensor NG,,Closed
+L1-P2-10,Camera Thrust + Weight Check 2,Programming,,Buat Logging,,Closed
+L1-P2-11,Camera Thrust + Weight Check 2,,,Install Bracket Sensor Part Detect,,Closed
+L1-P2-12,Camera Thrust + Weight Check 2,Trial,P1,Trial Parameter CSV with Scan 1 Cycle All Model,,Open
+L1-P2-13,Camera Thrust + Weight Check 2,Trial,P1,Trial Model S15,,Closed
+L1-P2-14,Camera Thrust + Weight Check 2,Trial,P1,Trial Model S11,,Closed
+L1-P2-15,Camera Thrust + Weight Check 2,Trial,P1,"Pengambilan  Data QA Camera Thrust Model SRE11 30 Cycle (OK, NG1, NG2)",,Closed
+L1-P2-16,Camera Thrust + Weight Check 2,Electrical,P1,Tambahkan Label IP Address pada Device (Barcode Reader),Sukri,Closed
+L1-P2-17,PRV,Trial,P1,Trial Jig D01NE,,Closed
+L1-P2-18,Camera Thrust + Weight Check 2,Trial,P1,"Pengambilan  Data QA Camera Thrust Model S11 30 Cycle (OK, NG1, NG2)",,Closed
+L1-P2-19,Camera Thrust + Weight Check 2,Trial,P2,"Pengambilan  Data QA Camera Thrust Model S15  30 Cycle (OK, NG1, NG2)",,Open
+L1-P2-20,Camera Thrust + Weight Check 2,Trial,P1,Pengambilan  Data QA Camera Thrust Model S11 (Repeat 10 per Jig),,Closed
+L1-P2-21,Camera Thrust + Weight Check 2,Trial,P2,Pengambilan Data QA Camera Thrust Model S15 (Repeat 10 per Jig),,Open
+L1-P2-22,Camera Thrust + Weight Check 2,Programming,P1,Making counter OK NG di HMI,,Closed
+L1-P2-23,Camera Thrust + Weight Check 2,Preparation,P1,Making Master NG Camera Thrust Bearing (Roller-Race-Race) 10SA11/13,,Closed
+L1-P2-24,Camera Thrust + Weight Check 2,Preparation,P1,Making Master NG Camera Thrust Bearing (Race-Race-Roller) 10SA11/13,,Closed
+L1-P2-26,Camera Thrust + Weight Check 2,Trial,P1,Pengambilan Data QA Camera Thrust Model SRE11 (Repeat 10 per Jig),,Closed
+L1-P2-27,Camera Thrust + Weight Check 2,Mechanical,P2,Install bracket camera swing after improve,,Open
+L1-P2-28,Camera Thrust + Weight Check 2,Electrical,P1,Install New Power Supply and Hub with Add Panel,,Closed
+L1-P2-29,Camera Thrust + Weight Check 2,Preparation,P1,Making Master NG Camera Thrust Bearing (Roller-Race-Race) 10SRE11/13,,Closed
+L1-P2-30,Camera Thrust + Weight Check 2,Preparation,P1,Making Master NG Camera Thrust Bearing (Race-Race-Roller) 10SRE11/13,,Closed
+L1-P2-31,Camera Thrust + Weight Check 2,Preparation,P1,Making Master NG Weight Small (-1 Shoe) Model SRE15,,Closed
+L1-P2-32,Camera Thrust + Weight Check 2,Preparation,P1,Making Master NG Weight Small (+1 Shoe) Model SRE15,,Closed
+L1-P2-33,Camera Thrust + Weight Check 2,Trial,P1,"Pengambilan Data QA Camera Thrust Model SA11/13 30 Cycle (OK, NG1, NG2)",,Closed
+L1-P2-34,Camera Thrust + Weight Check 2,Trial,P1,Pengambilan Data QA Camera Thrust Model SA11/13 (Repeat 10 per Jig),,Closed
+L1-P2-36,Camera Thrust + Weight Check 2,Dokumen,P1,Making SOP Mastering Camera Thrust Bearing,,Closed
+L1-P2-37,Camera Thrust + Weight Check 2,Dokumen,P1,Making SOP Mastering Weight Check 2,,Closed
+L1-P2-38,Camera Thrust + Weight Check 2,Dokumen,P1,Edukasi Mastering Zero and Mastering Value Weight 2,,Open
+L1-P2-39,Camera Thrust + Weight Check 2,Programming,P1,"Programming Mastering +1 Shoe dan -1 Shoe dengan flow pengecekan Weight 2, serta penyimpanan serial number dan nilai berat part master dari Weight 1 ke Weight 2. (Kurang Serial)",Izzi,Open
+L1-P2-40,Camera Thrust + Weight Check 2,Programming,P1,Hasil Angka pengukuran Weight 2 tidak muncul,Izzi,Open
+L1-P2-41,Camera Thrust + Weight Check 2,Electrical,P1,Pindah Connection LAN ke Junction Box,Sukri,Closed
+L1-P2-42,Camera Thrust + Weight Check 2,Programming,P1,Saat Selector Manual/Auto Camera Capture,Izzi,Open
+L1-P2-43,Camera Thrust + Weight Check 2,Mechanical,P2,Install Base Pneumatic,,Closed
+L1-P2-44,Camera Thrust + Weight Check 2,Electrical,P2,Ganti urutan lampu OK NG,Sukri,Open
+L1-P2-45,Camera Thrust + Weight Check 2,Electrical,P1,Additional RAM at PC,,Closed
+L1-P2-46,Camera Thrust + Weight Check 2,Trial,P1,Trial Running + Pokayoke Check (Model D26A) --> Remain Check Skip --> Check Skip at Camera Bolt,Produksi,Open
+L1-P2-47,Camera Thrust + Weight Check 2,Mechanical,P1,Ganti CP dari Panel Conveyor ke Panel Camera Thrust Bearing + 2S Panel,Ikhsan Idaka,Closed
+L1-P2-48,Camera Thrust + Weight Check 2,Programming,,Alarm Disconnect Camera Thrust,,Open
+L1-P2-49,Camera Thrust + Weight Check 2,Programming,P1,Alarm Dandory Model,,Open
+L1-P2-50,Camera Thrust + Weight Check 2,Design,P1,Additional Inverter Motor Camera Thrust Bearing,,Open
+L1-P2-51,Camera Thrust + Weight Check 2,Programming,P1,Improve Model Name at HMI --> Remain Check Program,,Closed
+L1-P2-52,Camera Thrust + Weight Check 2,Programming,P1,Model D26A susah scan di weight 2,,Open
+L1-P2-53,Camera Thrust + Weight Check 2,Programming,P1,Re-Teching SR1000W Model JD,,Open
+L1-P2-54,Camera Thrust + Weight Check 2,Trial,,Trial QC N5 per Part Number (11 Model),,Closed
+L1-P2-55,Camera Thrust + Weight Check 2,Trial,P1,Review Standar Weight 2 Model 10S15C,,Open
+L1-P2-56,Camera Thrust + Weight Check 2,Trial,P1,Missjudge Thrust Bearing Type Kenki,,Closed
+L1-P2-57,Camera Thrust + Weight Check 2,Mechanical,,Standard Inner Shaft Coak EFC1,,Closed
+L1-P2-58,Camera Thrust + Weight Check 2,Mechanical,,Install Air Curtain,,Open
+L1-P2-59,Camera Thrust + Weight Check 2,Programming,,Improve Program Camera S11,,Closed
+L1-P2-60,Camera Thrust + Weight Check 2,Mechanical,,Ganti SR-1000 ke SR-X300,,Closed
+L1-P2-61,Camera Thrust + Weight Check 2,Mechanical,,Change SR1000 to SR-X300,,Closed
+L1-P3-01,PRV,,,,,Closed
+L1-P3-02,PRV,,,"Update Program Estic (IP, Parameter, Tool)",,Closed
+L1-P3-03,PRV,,,Kalibrasi Tool Estic,,Closed
+L1-P3-04,PRV,,,Ganti Urutan Tower Lamp,,Closed
+L1-P3-05,PRV,,,Trial Pokayoke Check,,Closed
+L1-P3-06,PRV,Trial,P1,Trial Jig All Model,Izzi,Open
+L1-P3-07,PRV,Trial,P1,Trial Parameter CSV with Scan 1 Cycle All Model,Izzi,Open
+L1-P3-08,PRV,,,Trial Initial Process PRV,,Closed
+L1-P3-09,PRV,,,Install Bracket Sensor Part,,Closed
+L1-P3-10,PRV,,,Connect Ethernet to Controller Estic,,Closed
+L1-P3-11,PRV,Programming,,Buat Logging PRV,,Closed
+L1-P3-12,PRV,Electrical,P2,Tambahkan Label IP Address pada Device,,Closed
+L1-P3-13,PRV,Trial,,Trial Jig Model D01NE,,Closed
+L1-P3-14,PRV,Mechanical,P2,Jig Cap PRV — Marking Nylon Model D30D,,In Progress
+L1-P3-15,PRV,Mechanical,P2,Jig Cap PRV — Marking Nylon Model D40L,,In Progress
+L1-P3-16,PRV,Mechanical,P2,Jig Cap PRV — Marking Nylon Model D26A,,In Progress
+L1-P3-17,PRV,Mechanical,P2,Jig Cap PRV — Marking Nylon Model D80N,,In Progress
+L1-P3-18,Camera Bolt Through,Programming,P1,Making counter OK NG di HMI,,Closed
+L1-P3-19,Camera Bolt Through,Dokumen,P1,Making SOP Mastering Camera Bolt Through,,Closed
+L1-P3-20,Camera Bolt Through,Dokumen,P1,Edukasi Mastering Camera Bolt Through,,Open
+L1-P3-22,Camera Bolt Through,Mechanical,P1,Marking Posisi Agar Part Terkena Sensor,,Closed
+L1-P3-23,Camera Bolt Through,Trial,P2,Setting and Trial Jig Barcode Model 4JL,,Open
+L1-P3-24,Camera Bolt Through,Trial,P1,Trial Barcode All Model --> posisi barcode di screen shoot (../..),,Open
+L1-P3-25,Camera Bolt Through,Mechanical,P1,Pasang Cover Sensor Part dan Pallet,Ramdan HD,Closed
+L1-P3-27,Camera Bolt Through,Mechanical,P1,Pasang Junction Box Sensor Part dan Pallet,Fajar HD,Closed
+L1-P3-28,Camera Bolt Through,Trial,P1,Trial Running + Pokayoke Check (Model D26A) --> Remain Check Skip --> Re-Schedule Senin,Produksi,Open
+L1-P3-29,Camera Bolt Through,Mechanical,P2,Pasang Bracket RFID agar Sensor Pallet bisa Detect,,Open
+L1-P3-30,Camera Bolt Through,Electrical,P1,Wiring Sensor Pallet and Part ke Junction Box,Ikhsan Idaka,Closed
+L1-P3-31,Camera Bolt Through,Electrical,P2,Install tag reader di station barcode,,Open
+L1-P3-32,Camera Bolt Through,Programming,P1,Alarm Dandory Model,,Open
+L1-P3-33,Camera Bolt Through,Electrical,P1,Install Bracket Scanner Shoe Clearance SR-1000,,Closed
+L1-P3-34,Camera Bolt Through,Trial,,Trial QC N5 per Part Number (11 Model),,Closed
+L1-P3-35,Camera Bolt Through,Programming,P1,Scanner dibuat ON terus sampai barcode dapat,,Open
+L1-P3-36,Camera Bolt Through,Programming,P1,Additional Standard CSV untuk Membedakan Panjang Bolt,,Open
+L1-P4-01,Camera Bolt Through,,,Ganti SRX dengan SR1000W,,Closed
+L1-P4-02,Camera Bolt Through,,,Setting IP SR1000W,,Closed
+L1-P4-03,Camera Bolt Through,,,Connect SR1000W ke Program PLC,,Closed
+L1-P4-04,Camera Bolt Through,Electrical,P2,Additional Automatic Filling Oil,Izzi,Open
+L1-P4-05,Camera Bolt Through,,,Trial Pokayoke Check,,Closed
+L1-P4-06,Camera Bolt Through,,,Wiring Sensor Part Detect,,Closed
+L1-P4-07,Camera Bolt Through,,,Wiring Sensor Pallet Detect,,Closed
+L1-P4-08,Camera Bolt Through,,,I/O Check Sensor Part,,Closed
+L1-P4-09,Camera Bolt Through,,,Update Program Using SR1000,,Closed
+L1-P4-10,Camera Bolt Through,Trial,P1,Trial Parameter CSV with Scan 1 Cycle All Model,,Open
+L1-P4-11,Camera Bolt Through,Mechanical,P1,Improve Bracket Sensor LR-Z,,Closed
+L1-P4-12,Camera Bolt Through,Electrical,P2,"Tambahkan Label IP Address pada Device (Barcode, Camera, PLC)",,Closed
+L1-P4-13,Camera Bolt Through,Mechanical,P1,Install Bracket Fix Background HMI,Fajar HD,Closed
+L1-P4-14,PRV,Dokumen,P1,Making SOP Mastering PRV,,Closed
+L1-P4-15,PRV,Mechanical,P1,Repair Jig Cap PRV Model D30D (Ganti Nylon + Nambah Withe Line),Fajar HD,Closed
+L1-P4-16,PRV,Mechanical,P1,Repair Jig Cap PRV Model D40L (Balik Nylon+Marking Arah Cap),Fajar HD,Closed
+L1-P4-17,PRV,Preparation,P2,Labeling Tempat Jig Cap PRV yang sesuai,,Closed
+L1-P4-18,PRV,Design,P1,Design Jig Cap Type D01NC,Wanda,Closed
+L1-P4-19,PRV,Design,P1,Design Jig Cap Type D46T,Wanda,Closed
+L1-P4-20,PRV,Programming,P1,Program counter OK NG di HMI,,Closed
+L1-P4-21,PRV,Programming,P1,Alarm Estic Disconnect,Izzi,Open
+L1-P4-22,PRV,Programming,P1,Penambahan 1 DC Code yang belum di PRV,Izzi,Open
+L1-P4-23,PRV,Trial,P1,Trial Running + Pokayoke Check (Model D26A) --> Remain No Jig Cap --> Label White same with D40L,Produksi,Closed
+L1-P4-24,PRV,Programming,P1,Alarm Dandory Model,,Open
+L1-P4-25,PRV,Programming,P1,Improve Model Name at HMI --> Remain Check Program,,Closed
+L1-P4-26,Camera Bolt Through,Programming,P1,Improve Model Name at HMI --> Remain Check Program,,Closed
+L1-P4-27,PRV,Programming,P1,Making Alarm Salah Jig,,Open
+L1-P4-28,PRV,Trial,,Trial QC N5 per Part Number (11 Model),,Open
+L1-P4-29,PRV,Mechanical,P1,Ganti Sensor LR-Z250 ke LR-Z500 CN,,Open
+L1-P4-30,PRV,Mechanical,P1,Modif Jig D-Max ES,,Closed
+L1-PMS-1,Other,Electrical,,Connect Junction Box Switching PMS,,Open
+L1-Press Pin-1,Other,Mechanical,P2,Install Digital SOP,,Open
+L1-SC-1,Other,Mechanical,P1,Install Bracket Scanner Shoe Clearance SR-X300,Fajar HD,Open
+L4-Empthy Weight-1,Other,Mechanical,,Tambah Barcode Scanner SR1000 — 1 Set,,Closed
+L4-P1-01,Barcode Assy + Weight Check 1,Electrical,,Part Kabel Serial,Adi D,Closed
+L4-P1-03,Barcode Assy + Weight Check 1,Electrical,P1,Wiring Kabel Serial Box Switching Printer,Ramdan HD,Closed
+L4-P1-04,Barcode Assy + Weight Check 1,Electrical,P1,Wiring Kabel Power + Input Box Switching Printer,Ramdan HD,Closed
+L4-P1-05,Barcode Assy + Weight Check 1,Electrical,P1,Kabel Isi 4 untuk Power & Input Box Switching,Izzi,Closed
+L4-P1-09,Barcode Assy + Weight Check 1,Design,P1,Design Jig Barcode Assy All Model,Wanda,Closed
+L4-P1-11,Barcode Assy + Weight Check 1,Design,P2,Design Tanki Box Actreal,Wanda,Closed
+L4-P1-14,Barcode Assy + Weight Check 1,Mechanical,P2,Relayout Lampu Barcode,,Closed
+L4-P1-15,Barcode Assy + Weight Check 1,Electrical,P2,Connect Cable Multicore Control Panel,,Closed
+L4-P1-16,Barcode Assy + Weight Check 1,Electrical,P2,Connect Sensor to Control Panel,,Closed
+L4-P1-17,Barcode Assy + Weight Check 1,Electrical,P2,Connect LAN to Control Panel,,Closed
+L4-P1-18,Barcode Assy + Weight Check 1,Electrical,P2,2S Cable Scanner,,Closed
+L4-P1-19,Barcode Assy + Weight Check 1,Electrical,P2,Tarik Power untuk Control Panel,,Closed
+L4-P1-20,Barcode Assy + Weight Check 1,Programming,P2,Trial Read Barcode All Model,,Closed
+L4-P1-21,Barcode Assy + Weight Check 1,Preparation,P1,Prepare Part Weight 1 All Model,,Closed
+L4-P1-22,Barcode Assy + Weight Check 1,Mechanical,P1,Improve Refill Barcode — Modif Frame,,Closed
+L4-P1-23,Barcode Assy + Weight Check 1,Electrical,P1,Improve Refill Barcode — Rewiring,,Closed
+L4-P1-24,Barcode Assy + Weight Check 1,Trial,P1,Trial Scan All Tipe Cylinder,MP Prod,Open
+L4-P1-25,Barcode Assy + Weight Check 1,Mechanical,P1,Modif Frame MC Base on Request Pak Mul,Agung HD,Closed
+L4-P1-26,Barcode Assy + Weight Check 1,Electrical,P2,Install Tank Spray Actreal,,Open
+L4-P1-27,Barcode Assy + Weight Check 1,Mechanical,P2,Install Auto Nozzle Spray Actreal,Agung HD,Closed
+L4-P1-28,Barcode Assy + Weight Check 1,Electrical,P2,Install Solenoid Spray Actreal,Agung HD,Closed
+L4-P1-29,Barcode Assy + Weight Check 1,Trial,P1,Trial Parameter All Model,Izzi,Open
+L4-P1-31,Barcode Assy + Weight Check 1,Electrical,P1,Ganti Urutan Tower Lamp,Ihsan,Closed
+L4-P1-32,Barcode Assy + Weight Check 1,Electrical,P1,2S Wiring After Modif Frame Request Pak Mul,Sukri,Closed
+L4-P1-34,Barcode Assy + Weight Check 1,Programming,P1,Program Counter OK NG di HMI,,Open
+L4-P2-04,Camera Thrust + Weight Check 2,Programming,P2,Buat Logging Camera,Izzi,Closed
+L4-P2-05,Camera Thrust + Weight Check 2,Preparation,P2,Making SOP Check NG Ratio Saat Menjalankan No Judge,Very,Open
+L4-P2-06,Camera Thrust + Weight Check 2,Mechanical,P2,Modif Shutter Supply to Shoe Clearance,Ramdan HD,Closed
+L4-P2-08,Camera Thrust + Weight Check 2,Electrical,,Power untuk PC Area After Relayout PC,Facility,Open
+L4-P2-09,Camera Thrust + Weight Check 2,Design,P2,Submit Drawing Jig Conveyor Shaft Sub Assy,Very,Open
+L4-P2-10,Camera Thrust + Weight Check 2,Preparation,,Edukasi Power ON / Power OFF PC,Izzi,Open
+L4-P2-11,Camera Thrust + Weight Check 2,Programming,,Program Handling Part NG di Station Loading,Izzi,Open
+L4-P2-12,Camera Thrust + Weight Check 2,Trial,,Trial Scan Barcode Weight All Model,MP Prod,Open
+L4-P2-13,Camera Thrust + Weight Check 2,Programming,,Masukan Parameter Berat All Model,Izzi,Open
+L4-P2-14,Camera Thrust + Weight Check 2,Mechanical,,Install Plate Pneumatic Air Curtain,,Open
+L4-P2-15,Camera Thrust + Weight Check 2,Mechanical,,Tambah Solenoid Air Curtain,Ramdan HD,Open
+L4-P2-16,Camera Thrust + Weight Check 2,Mechanical,,Tambah Roller di Chutter Shoe Clearance,Ramdan HD,Open
+L4-P2-17,Camera Thrust + Weight Check 2,Trial,,Trial Parameter All Model,Izzi,Open
+L4-P2-18,Camera Thrust + Weight Check 2,Programming,P1,Program Counter OK NG di HMI,,Open
+L4-P2-19,Camera Thrust + Weight Check 2,Preparation,P2,Prepare Part Weight 2 All Model,MP Prod,Open
+L4-P2-20,Camera Thrust + Weight Check 2,Electrical,,Wiring Power Supply dan LAN ke Junction Box,Sukri,Open
+L4-P3-01,Camera Bolt Through,Mechanical,,Improve Retry Barcode — Setting Posisi Scanner,,Closed
+L4-P3-02,Camera Bolt Through,Programming,P1,Program Counter OK NG di HMI,,Open
+L4-P4-01,PRV,Mechanical,,Buat Tempat Master PRV Loss Tightening,Produksi L4,Closed
+L4-P4-02,PRV,Mechanical,,Buat Tempat Master O-Ring,Produksi L4,Closed
+L4-P4-03,PRV,,,Countermeasure Temuan Safety Check,,Closed
+L4-P4-04,PRV,Electrical,,Strategy Prepare Supply Angin dan Supply Listrik untuk Current PRV L4,Izzi,Closed
+L4-P4-06,PRV,Programming,,Tambah Buzzer BEP untuk Konfirmasi O-Ring,,Closed
+L4-P4-08,PRV,Electrical,P2,Improve Cable yang Kurang Panjang dari Main Panel,,Open
+L4-P4-10,PRV,Electrical,,Tambah Grounding Pintu Main Panel,,Closed
+L4-P4-11,PRV,Preparation,P2,Submit Drawing to Produksi — Jig Cap PRV,Very,Open
+L4-P4-12,PRV,Preparation,P2,Submit Drawing to Produksi — Jig Rear PRV,Very,Open
+L4-P4-13,PRV,Preparation,,Preparation Stiker Safety,,Closed
+L4-P4-14,PRV,Preparation,,Buat Master CSV,,Closed
+L4-P4-15,PRV,Programming,P1,Program Counter OK NG di HMI,,Open
+L4-PMS Server-1,Other,Electrical,P1,Routing Cable Serial From Printer to Junction Box,Sukri,Open
+L4-PMS Server-2,Other,Programming,P1,Konfirmasi Penambahan Alamat Input PLC dan Posisi Panel PMS,Adi D,Closed
+L4-Vacum-01,Other,Mechanical,,Tambah Barcode Scanner SR1000 — 2 Set,,Open
