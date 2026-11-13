@@ -6,8 +6,9 @@ use App\Models\DcCode;
 use App\Models\Project;
 use App\Models\WeightStandard;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
-
 class ParameterController extends Controller
 {
     public function index(Request $request, Project $project)
@@ -38,8 +39,10 @@ class ParameterController extends Controller
             $codes = $codes->filter(fn ($c) => ! ($c->type_code && $std->has($c->type_code)))->values();
         }
 
+                $barcodes = DB::table('dc_barcode_files')->select('dc_code_id', 'filename')->pluck('filename', 'dc_code_id');
+
         return view('project.parameter', compact(
-            'project', 'tab', 'standards', 'std', 'codes', 'usage', 'missing', 'noStdCount', 'dupes', 'types', 'totalDc'
+            'project', 'tab', 'standards', 'std', 'codes', 'usage', 'missing', 'noStdCount', 'dupes', 'types', 'totalDc', 'barcodes'
         ));
     }
 
@@ -129,6 +132,100 @@ class ParameterController extends Controller
         return back()->with('ok', 'DC Code dihapus.');
     }
 
+       // ===== File barcode =====
+
+    public function barcodeUpload(Request $request, Project $project, DcCode $dc)
+    {
+        $this->own($project, $dc->project_id);
+
+        $request->validate([
+            'barcode_file' => 'required|file|mimes:png,jpg,jpeg,gif,webp,pdf|max:500',
+        ], [
+            'barcode_file.max'   => 'Ukuran file maksimal 500 KB.',
+            'barcode_file.mimes' => 'File harus berupa PNG, JPG, GIF, WEBP, atau PDF.',
+        ]);
+
+        $file = $request->file('barcode_file');
+
+        DB::table('dc_barcode_files')->updateOrInsert(
+            ['dc_code_id' => $dc->id],
+            [
+                'filename'   => $file->getClientOriginalName(),
+                'mime'       => $file->getMimeType() ?: 'application/octet-stream',
+                'size'       => $file->getSize(),
+                'data'       => base64_encode(file_get_contents($file->getRealPath())),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
+        );
+
+        return back()->with('ok', "File barcode DC Code {$dc->dc_code} tersimpan.");
+    }
+
+    public function barcodeShow(Project $project, DcCode $dc)
+    {
+        $this->own($project, $dc->project_id);
+
+        $f = DB::table('dc_barcode_files')->where('dc_code_id', $dc->id)->first();
+        abort_unless($f, 404);
+
+        return response(base64_decode($f->data), 200, [
+            'Content-Type'        => $f->mime,
+            'Content-Disposition' => 'inline; filename="' . str_replace(['"', '\\'], '', Str::ascii($f->filename)) . '"',
+        ]);
+    }
+
+    public function barcodeDelete(Project $project, DcCode $dc)
+    {
+        $this->own($project, $dc->project_id);
+        DB::table('dc_barcode_files')->where('dc_code_id', $dc->id)->delete();
+
+        return back()->with('ok', 'File barcode dihapus.');
+    }
+    // ===== Edit langsung di tabel =====
+
+    public function stdInline(Request $request, Project $project, WeightStandard $standard)
+    {
+        $this->own($project, $standard->project_id);
+
+        $rules = [
+            'nominal'   => 'required|integer|min:1',
+            'tolerance' => 'required|integer|min:0',
+        ];
+        $field = $request->input('field');
+        abort_unless(isset($rules[$field]), 422, 'Kolom tidak bisa diedit.');
+
+        $data = $request->validate(['value' => $rules[$field]]);
+        $standard->update([$field => (int) $data['value']]);
+
+        return response()->json([
+            'value' => $standard->$field,
+            'upper' => $standard->upper,
+            'lower' => $standard->lower,
+        ]);
+    }
+
+    public function dcInline(Request $request, Project $project, DcCode $dc)
+    {
+        $this->own($project, $dc->project_id);
+
+        $rules = [
+            'prog_no'     => 'nullable|integer|min:0',
+            'dc_code'     => 'required|string|max:50',
+            'part_number' => 'nullable|string|max:80',
+            'model'       => 'nullable|string|max:120',
+            'type_code'   => 'nullable|string|max:40',
+            'scale_prog'  => 'nullable|integer|min:0',
+            'status'      => ['nullable', Rule::in(DcCode::STATUSES)],
+        ];
+        $field = $request->input('field');
+        abort_unless(isset($rules[$field]), 422, 'Kolom tidak bisa diedit.');
+
+        $data = $request->validate(['value' => $rules[$field]]);
+        $dc->update([$field => $data['value']]);
+
+        return response()->json(['value' => $dc->$field]);
+    }
     // ===== bantu =====
 
     private function types(Project $project)

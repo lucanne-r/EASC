@@ -45,16 +45,34 @@
 
     <div class="co-wrap">
         <table>
-            <tr><th>Prog</th><th>DC Code</th><th>Part No.</th><th>Model</th><th>TYPE</th><th>Prog timbangan</th><th class="n">Upper</th><th class="n">Lower</th><th>Standar</th><th>Status</th><th></th></tr>
+            <tr><th>Prog</th><th>DC Code</th><th>Part No.</th><th>File Barcode</th><th>Model</th><th>TYPE</th><th>Prog timbangan</th><th class="n">Upper</th><th class="n">Lower</th><th>Standar</th><th>Status</th><th></th></tr>
             @forelse ($codes as $c)
-                @php $s = $c->type_code ? $std->get($c->type_code) : null; @endphp
+                @php
+    $s = $c->type_code ? $std->get($c->type_code) : null;
+    $u = $base . '/dc/' . $c->id . '/inline';
+@endphp
                 <tr>
-                    <td>{{ $c->prog_no }}</td>
-                    <td><b>{{ $c->dc_code }}</b>@if (in_array($c->dc_code, $dupes)) <span class="co-b warn">dobel</span>@endif</td>
-                    <td>{{ $c->part_number }}</td>
-                    <td>{{ $c->model }}</td>
-                    <td>{{ $c->type_code }}</td>
-                    <td>{{ $c->scale_prog }}</td>
+                    <td class="ed" data-field="prog_no" data-type="number" data-url="{{ $u }}" data-value="{{ $c->prog_no }}">{{ $c->prog_no }}</td>
+                   <td class="ed" data-field="dc_code" data-reload="1" data-url="{{ $u }}" data-value="{{ $c->dc_code }}"><b>{{ $c->dc_code }}</b>@if (in_array($c->dc_code, $dupes)) <span class="co-b warn">dobel</span>@endif</td>
+                    <td class="ed" data-field="part_number" data-url="{{ $u }}" data-value="{{ $c->part_number }}">{{ $c->part_number }}</td>
+                    <td style="min-width:230px">
+                        @if (isset($barcodes[$c->id]))
+                            <a class="co-b info" href="{{ $base }}/dc/{{ $c->id }}/barcode" target="_blank">{{ \Illuminate\Support\Str::limit($barcodes[$c->id], 22) }}</a>
+                            <form class="co-inline" method="POST" action="{{ $base }}/dc/{{ $c->id }}/barcode" onsubmit="return confirm('Hapus file barcode ini?')">
+                                @csrf @method('DELETE')
+                                <button class="co-btn sm red">Hapus</button>
+                            </form>
+                        @else
+                            <form class="co-inline" method="POST" enctype="multipart/form-data" action="{{ $base }}/dc/{{ $c->id }}/barcode">
+                                @csrf
+                                <input type="file" name="barcode_file" accept="image/png,image/jpeg,image/gif,image/webp,application/pdf" required style="max-width:160px;font-size:12px">
+                                <button class="co-btn sm">Unggah</button>
+                            </form>
+                        @endif
+                    </td>
+                    <td class="ed" data-field="model" data-url="{{ $u }}" data-value="{{ $c->model }}">{{ $c->model }}</td>
+                    <td class="ed" data-field="type_code" data-reload="1" data-url="{{ $u }}" data-value="{{ $c->type_code }}">{{ $c->type_code }}</td>
+                    <td class="ed" data-field="scale_prog" data-type="number" data-url="{{ $u }}" data-value="{{ $c->scale_prog }}">{{ $c->scale_prog }}</td>
                     <td class="n">{{ $s ? $s->upper : '–' }}</td>
                     <td class="n">{{ $s ? $s->lower : '–' }}</td>
                     <td>
@@ -62,7 +80,7 @@
                         @elseif (! $c->type_code)<span class="co-b warn">TYPE belum diisi</span>
                         @else<span class="co-b bad">Belum ada standar</span>@endif
                     </td>
-                    <td>@if ($c->status)<span class="co-b info">{{ $c->status }}</span>@endif</td>
+                   <td class="ed" data-field="status" data-type="status" data-reload="1" data-url="{{ $u }}" data-value="{{ $c->status }}">@if ($c->status)<span class="co-b info">{{ $c->status }}</span>@endif</td>
                     <td style="white-space:nowrap">
                         <a class="co-btn sm" href="{{ $base }}/dc/{{ $c->id }}/edit">Edit</a>
                         <form class="co-inline" method="POST" action="{{ $base }}/dc/{{ $c->id }}" onsubmit="return confirm('Hapus DC Code {{ $c->dc_code }}?')">
@@ -72,7 +90,7 @@
                     </td>
                 </tr>
             @empty
-                <tr><td colspan="11" style="text-align:center;color:#667085;padding:24px">Belum ada DC Code. Klik "+ Tambah DC Code".</td></tr>
+                <tr><td colspan="12" style="text-align:center;color:#667085;padding:24px">Belum ada DC Code. Klik "+ Tambah DC Code".</td></tr>
             @endforelse
         </table>
     </div>
@@ -94,12 +112,13 @@
         <table>
             <tr><th>TYPE</th><th class="n">Nominal</th><th class="n">Toleransi (±)</th><th class="n">Upper</th><th class="n">Lower</th><th class="n">Dipakai DC Code</th><th></th></tr>
             @forelse ($standards as $s)
+    @php $u = $base . '/standar/' . $s->id . '/inline'; @endphp
                 <tr>
                     <td><b>{{ $s->type_code }}</b></td>
-                    <td class="n">{{ $s->nominal }}</td>
-                    <td class="n">{{ $s->tolerance }}</td>
-                    <td class="n">{{ $s->upper }}</td>
-                    <td class="n">{{ $s->lower }}</td>
+                   <td class="n ed" data-field="nominal" data-type="number" data-url="{{ $u }}" data-value="{{ $s->nominal }}">{{ $s->nominal }}</td>
+                   <td class="n ed" data-field="tolerance" data-type="number" data-url="{{ $u }}" data-value="{{ $s->tolerance }}">{{ $s->tolerance }}</td>
+                    <td class="n js-upper">{{ $s->upper }}</td>
+                    <td class="n js-lower">{{ $s->lower }}</td>
                     <td class="n">{{ $usage[$s->type_code] ?? 0 }}</td>
                     <td style="white-space:nowrap">
                         <a class="co-btn sm" href="{{ $base }}/standar/{{ $s->id }}/edit">Edit</a>
@@ -115,4 +134,100 @@
         </table>
     </div>
 @endif
+<style>
+    td.ed{cursor:text}
+    td.ed:hover{background:#fbf3f4;outline:1px dashed #c9a3ab;outline-offset:-1px}
+    td.ed.editing{padding:4px}
+    td.ed.ok{background:#e3f4e8;transition:background .6s}
+    .ed-box{width:100%;min-width:70px;padding:6px 8px;border:2px solid #6d1a2b;border-radius:6px;font:inherit;background:#fff}
+</style>
+<div id="pm-data" hidden data-csrf="{{ csrf_token() }}" data-statuses='@json(\App\Models\DcCode::STATUSES)'></div>
+<script>
+(function () {
+    var pm = document.getElementById('pm-data');
+    var CSRF = pm.dataset.csrf;
+    var STATUSES = JSON.parse(pm.dataset.statuses);
+
+    document.addEventListener('click', function (e) {
+        var td = e.target.closest('td.ed');
+        if (td && !td.classList.contains('editing')) startEdit(td);
+    });
+
+    function startEdit(td) {
+        var type = td.dataset.type || 'text';
+        var old = td.dataset.value || '';
+        var original = td.innerHTML;
+        var box;
+
+        if (type === 'status') {
+            box = document.createElement('select');
+            box.innerHTML = '<option value="">Normal</option>' + STATUSES.map(function (s) {
+                return '<option' + (s === old ? ' selected' : '') + '>' + s + '</option>';
+            }).join('');
+        } else {
+            box = document.createElement('input');
+            box.type = (type === 'number') ? 'number' : 'text';
+            if (type === 'number') box.min = 0;
+            box.value = old;
+        }
+        box.className = 'ed-box';
+
+        td.classList.add('editing');
+        td.innerHTML = '';
+        td.appendChild(box);
+        box.focus();
+        if (box.select) box.select();
+
+        var done = false;
+        function cancel() {
+            if (done) return;
+            done = true;
+            td.classList.remove('editing');
+            td.innerHTML = original;
+        }
+        function save() {
+            if (done) return;
+            var val = box.value.trim();
+            if (val === old) { cancel(); return; }
+            done = true;
+            td.classList.remove('editing');
+            td.innerHTML = '...';
+
+            fetch(td.dataset.url, {
+                method: 'PATCH',
+                headers: {'X-CSRF-TOKEN': CSRF, 'Accept': 'application/json', 'Content-Type': 'application/json'},
+                body: JSON.stringify({field: td.dataset.field, value: val})
+            })
+            .then(function (r) { return r.json().then(function (j) { return {ok: r.ok, j: j}; }); })
+            .then(function (res) {
+                if (!res.ok) {
+                    td.innerHTML = original;
+                    var msg = res.j.message || 'Gagal menyimpan.';
+                    if (res.j.errors) msg = Object.values(res.j.errors)[0][0];
+                    alert(msg);
+                    return;
+                }
+                if (td.dataset.reload) { location.reload(); return; }
+
+                var v = (res.j.value === null || res.j.value === undefined) ? '' : res.j.value;
+                td.dataset.value = v;
+                td.textContent = v;
+                var tr = td.closest('tr');
+                if (res.j.upper !== undefined) tr.querySelector('.js-upper').textContent = res.j.upper;
+                if (res.j.lower !== undefined) tr.querySelector('.js-lower').textContent = res.j.lower;
+                td.classList.add('ok');
+                setTimeout(function () { td.classList.remove('ok'); }, 700);
+            })
+            .catch(function () { td.innerHTML = original; alert('Gagal menyimpan. Cek koneksi atau coba lagi.'); });
+        }
+
+        box.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') { e.preventDefault(); save(); }
+            if (e.key === 'Escape') cancel();
+        });
+        box.addEventListener('blur', save);
+        if (type === 'status') box.addEventListener('change', save);
+    }
+})();
+</script>
 @endsection

@@ -56,6 +56,52 @@
         @yield('content')
     </main>
 </div>
+<script>
+(function () {
+    var wraps = document.querySelectorAll('.co-wrap');
+    if (!wraps.length) return;
 
+    var anchor = document.querySelector('h2 + .lead') || document.querySelector('h2');
+    if (!anchor) return;
+
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'co-btn ghost';
+    btn.textContent = 'Ekspor Excel';
+    btn.style.margin = '0 0 12px';
+    anchor.insertAdjacentElement('afterend', btn);
+
+    btn.addEventListener('click', function () {
+        var html = '';
+        wraps.forEach(function (w) {
+            var t = w.querySelector('table');
+            if (!t) return;
+
+            var c = t.cloneNode(true);
+            c.querySelectorAll('form,input,button,select,.co-btn,.no-export').forEach(function (el) { el.remove(); });
+            c.querySelectorAll('th').forEach(function (th) {
+                th.setAttribute('style', 'background:#6D1A2B;color:#FFFFFF;font-weight:bold');
+            });
+
+            var p = w.previousElementSibling;
+            var title = (p && p.tagName !== 'FORM' && p.innerText.trim().length < 80) ? p.innerText.trim() : '';
+            html += (title ? '<p><b>' + title + '</b></p>' : '') + c.outerHTML + '<br>';
+        });
+
+        var h2 = document.querySelector('h2');
+        var name = (h2 ? h2.textContent.trim() : 'Data').replace(/\s+/g, '_')
+                 + '_' + new Date().toISOString().slice(0, 10) + '.xls';
+
+        var doc = '<html><head><meta charset="UTF-8"></head><body>' + html + '</body></html>';
+        var blob = new Blob(['\ufeff' + doc], { type: 'application/vnd.ms-excel;charset=utf-8' });
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = name;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+    });
+})();
+</script>
 </body>
 </html>
