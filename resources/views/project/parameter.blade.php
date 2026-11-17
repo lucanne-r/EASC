@@ -57,7 +57,13 @@
                     <td class="ed" data-field="part_number" data-url="{{ $u }}" data-value="{{ $c->part_number }}">{{ $c->part_number }}</td>
                     <td style="min-width:230px">
                         @if (isset($barcodes[$c->id]))
-                            <a class="co-b info" href="{{ $base }}/dc/{{ $c->id }}/barcode" target="_blank">{{ \Illuminate\Support\Str::limit($barcodes[$c->id], 22) }}</a>
+                          @if (\Illuminate\Support\Str::endsWith(strtolower($barcodes[$c->id]), '.pdf'))
+    <a class="co-b info" href="{{ $base }}/dc/{{ $c->id }}/barcode" target="_blank">{{ \Illuminate\Support\Str::limit($barcodes[$c->id], 22) }}</a>
+@else
+    <a href="{{ $base }}/dc/{{ $c->id }}/barcode" target="_blank" title="{{ $barcodes[$c->id] }}">
+        <img class="bc-img" src="{{ $base }}/dc/{{ $c->id }}/barcode" alt="Barcode {{ $c->dc_code }}">
+    </a>
+@endif
                             <form class="co-inline" method="POST" action="{{ $base }}/dc/{{ $c->id }}/barcode" onsubmit="return confirm('Hapus file barcode ini?')">
                                 @csrf @method('DELETE')
                                 <button class="co-btn sm red">Hapus</button>
@@ -136,6 +142,7 @@
 @endif
 <style>
     td.ed{cursor:text}
+    .bc-img{display:block;max-width:200px;max-height:60px;background:#fff;border:1px solid #dfe3ea;border-radius:4px;padding:2px;margin-bottom:4px}
     td.ed:hover{background:#fbf3f4;outline:1px dashed #c9a3ab;outline-offset:-1px}
     td.ed.editing{padding:4px}
     td.ed.ok{background:#e3f4e8;transition:background .6s}

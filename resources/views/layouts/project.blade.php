@@ -56,6 +56,7 @@
         @yield('content')
     </main>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"></script>
 <script>
 (function () {
     var wraps = document.querySelectorAll('.co-wrap');
@@ -71,35 +72,158 @@
     btn.style.margin = '0 0 12px';
     anchor.insertAdjacentElement('afterend', btn);
 
-    btn.addEventListener('click', function () {
-        var html = '';
-        wraps.forEach(function (w) {
-            var t = w.querySelector('table');
-            if (!t) return;
+    var MAX_W = 300, MAX_H = 110;
+    var imgCache = {};
 
-            var c = t.cloneNode(true);
-            c.querySelectorAll('form,input,button,select,.co-btn,.no-export').forEach(function (el) { el.remove(); });
-            c.querySelectorAll('th').forEach(function (th) {
-                th.setAttribute('style', 'background:#6D1A2B;color:#FFFFFF;font-weight:bold');
+    // muat gambar, taruh di latar putih, ubah ke PNG
+    function loadImg(src) {
+        if (!imgCache[src]) {
+            imgCache[src] = new Promise(function (resolve) {
+                var im = new Image();
+                im.onload = function () {
+                    var c = document.createElement('canvas');
+                    c.width = im.naturalWidth;
+                    c.height = im.naturalHeight;
+                    var ctx = c.getContext('2d');
+                    ctx.fillStyle = '#ffffff';
+                    ctx.fillRect(0, 0, c.width, c.height);
+                    ctx.drawImage(im, 0, 0);
+                    var scale = Math.min(MAX_W / c.width, MAX_H / c.height, 1);
+                    resolve({
+                        data: c.toDataURL('image/png'),
+                        w: Math.round(c.width * scale),
+                        h: Math.round(c.height * scale)
+                    });
+                };
+                im.onerror = function () { resolve(null); };
+                im.src = src;
             });
+        }
+        return imgCache[src];
+    }
 
-            var p = w.previousElementSibling;
-            var title = (p && p.tagName !== 'FORM' && p.innerText.trim().length < 80) ? p.innerText.trim() : '';
-            html += (title ? '<p><b>' + title + '</b></p>' : '') + c.outerHTML + '<br>';
-        });
+    function cellText(td) {
+        var c = td.cloneNode(true);
+        c.querySelectorAll('form,input,button,select,img,.co-btn,.no-export').forEach(function (el) { el.remove(); });
+        return c.textContent.replace(/\s+/g, ' ').trim();
+    }
 
-        var h2 = document.querySelector('h2');
-        var name = (h2 ? h2.textContent.trim() : 'Data').replace(/\s+/g, '_')
-                 + '_' + new Date().toISOString().slice(0, 10) + '.xls';
+    function sheetName(wb, base) {
+        var n = base.replace(/[\\\/\?\*\[\]:]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 28) || 'Data';
+        var name = n, i = 2;
+        while (wb.getWorksheet(name)) { name = n + ' ' + (i++); }
+        return name;
+    }
 
-        var doc = '<html><head><meta charset="UTF-8"></head><body>' + html + '</body></html>';
-        var blob = new Blob(['\ufeff' + doc], { type: 'application/vnd.ms-excel;charset=utf-8' });
-        var a = document.createElement('a');
-        a.href = URL.createObjectURL(blob);
-        a.download = name;
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
+    btn.addEventListener('click', async function () {
+        if (!window.ExcelJS) {
+            alert('Library Excel belum termuat. Cek koneksi internet, lalu refresh halaman (Ctrl+F5).');
+            return;
+        }
+        var label = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Menyiapkan file...';
+
+        try {
+            var wb = new ExcelJS.Workbook();
+            var tab = document.querySelector('.pm-tabs a.on');
+            var h2 = document.querySelector('h2');
+            var baseName = tab ? tab.textContent : (h2 ? h2.textContent : 'Data');
+
+            for (var wi = 0; wi < wraps.length; wi++) {
+                var t = wraps[wi].querySelector('table');
+                if (!t || !t.rows.length) continue;
+
+                var rows = Array.prototype.slice.call(t.rows);
+                var headCells = Array.prototype.slice.call(rows[0].cells);
+                var keep = [];
+                headCells.forEach(function (th, i) { if (th.textContent.trim() !== '') keep.push(i); });
+                var body = rows.slice(1).filter(function (r) {
+                    return r.cells.length > 1 && !r.querySelector('td[colspan]');
+                });
+
+                var ws = wb.addWorksheet(sheetName(wb, baseName));
+                ws.addRow(keep.map(function (i) { return headCells[i].textContent.trim(); }));
+                var hr = ws.getRow(1);
+                hr.height = 24;
+                hr.eachCell(function (c) {
+                    c.font = { bold: true, color: { argb: 'FFFFFFFF' } };
+                    c.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF6D1A2B' } };
+                    c.alignment = { vertical: 'middle' };
+                });
+
+                var widths = keep.map(function (i) { return Math.max(8, headCells[i].textContent.trim().length + 2); });
+                var imgCols = {};
+
+                for (var r = 0; r < body.length; r++) {
+                    var cells = body[r].cells;
+                    var values = [];
+                    var rowH = 0;
+                    var imgsHere = [];
+
+                    for (var k = 0; k < keep.length; k++) {
+                        var td = cells[keep[k]];
+                        if (!td) { values.push(''); continue; }
+
+                        var img = td.querySelector('img');
+                        if (img) {
+                            var info = await loadImg(img.src);
+                            values.push('');
+                            if (info) {
+                                imgsHere.push({ k: k, info: info });
+                                rowH = Math.max(rowH, info.h);
+                            }
+                            continue;
+                        }
+
+                        var txt = cellText(td);
+                        if (td.classList.contains('n') && /^-?\d+$/.test(txt)) {
+                            values.push(Number(txt));
+                        } else {
+                            values.push(txt);
+                        }
+                        widths[k] = Math.max(widths[k], Math.min(txt.length + 2, 50));
+                    }
+
+                    var row = ws.addRow(values);
+                    row.alignment = { vertical: 'middle', wrapText: true };
+                    if (rowH) row.height = Math.round(rowH * 0.75) + 8;
+
+                    for (var m = 0; m < imgsHere.length; m++) {
+                        var it = imgsHere[m];
+                        var id = wb.addImage({ base64: it.info.data, extension: 'png' });
+                        ws.addImage(id, {
+                            tl: { col: it.k + 0.05, row: ws.rowCount - 1 + 0.05 },
+                            ext: { width: it.info.w, height: it.info.h },
+                            editAs: 'oneCell'
+                        });
+                        imgCols[it.k] = Math.max(imgCols[it.k] || 0, it.info.w);
+                    }
+                }
+
+                for (var c2 = 0; c2 < keep.length; c2++) {
+                    ws.getColumn(c2 + 1).width = imgCols[c2] ? Math.ceil(imgCols[c2] / 7) + 2 : widths[c2];
+                }
+                ws.views = [{ state: 'frozen', ySplit: 1 }];
+                ws.autoFilter = { from: { row: 1, column: 1 }, to: { row: 1, column: keep.length } };
+            }
+
+            var buf = await wb.xlsx.writeBuffer();
+            var blob = new Blob([buf], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+            var fname = (h2 ? h2.textContent.trim() : 'Data').replace(/\s+/g, '_') + '_' + new Date().toISOString().slice(0, 10) + '.xlsx';
+            var a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = fname;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+        } catch (e) {
+            console.error(e);
+            alert('Gagal membuat file Excel. Refresh halaman lalu coba lagi, atau kirim screenshot error di Console (F12).');
+        } finally {
+            btn.disabled = false;
+            btn.textContent = label;
+        }
     });
 })();
 </script>
